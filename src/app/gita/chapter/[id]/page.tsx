@@ -23,7 +23,7 @@ export default function ChapterPage({ params }: { params?: { id?: string | strin
       <header className="mb-4">
         <h2 className="text-2xl sm:text-3xl font-semibold text-[#b7791f]">Chapter {chapter.id}: {chapter.name}</h2>
         {chapter.subtitle && <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">{chapter.subtitle}</p>}
-        <ChapterControls />
+        <ChapterControlsClient />
       </header>
 
       <div className="space-y-4">
