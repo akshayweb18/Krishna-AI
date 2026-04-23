@@ -1,0 +1,29 @@
+{
+  "name": "krishna-ai",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "import:pdf": "node scripts/import-geeta.js",
+    "import:txt": "node scripts/import-from-txt.js",
+    "import:fts": "node scripts/import-fts.js",
+    "import:fts:brute": "node scripts/import-fts-brute.js",
+    "split:lang": "node scripts/split-sans-hin-eng.js",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "framer-motion": "^12.38.0",
+    "next": "16.2.4",
+    "pdf-parse": "^1.1.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "25.6.0",
+    "@types/react": "19.2.14",
+    "tailwindcss": "^4",
+    "typescript": "6.0.3"
+  }
+}
