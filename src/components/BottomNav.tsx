@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function BottomNav() {
   return (
-    <nav className="bottom-nav-mobile md:hidden">
+    <nav className="bottom-nav-mobile hidden">
       {[
         { name: 'Home', icon: '🏠', active: true },
         { name: 'Chat', icon: '💬' },

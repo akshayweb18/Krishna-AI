@@ -23,6 +23,33 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Home hero adjustments for small screens (320px - 767px) */
+@media (min-width: 320px) and (max-width: 767px) {
+  .home-hero {
+    background-position: right !important;
+    background-size: cover;
+    position: relative;
+  }
+  .home-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(to left, rgba(0,0,0,0.65), rgba(0,0,0,0.25));
+  }
+  /* make the existing overlay slightly lighter so combined overlay feels balanced */
+  .home-hero .home-hero-overlay {
+    background: rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  /* ensure hero content sits above overlays */
+  .home-hero > .z-10, .home-hero .z-10 {
+    z-index: 10;
+    position: relative;
+  }
+}
+
 body {
   background-color: var(--deep-night);
   color: var(--divine-text);

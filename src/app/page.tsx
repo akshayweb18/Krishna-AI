@@ -8,9 +8,9 @@ export default function Home() {
   return (
     <section className="animate-fade-in space-y-8 md:space-y-20 pt-0 pb-6 md:pb-12 -mt-6">
       <div className="-mx-4 sm:-mx-6 lg:-mx-8">
-        <div className="w-screen relative left-1/2 -translate-x-1/2 bg-cover bg-center bg-no-repeat min-h-screen"
+        <div className="w-screen relative left-1/2 -translate-x-1/2 bg-cover bg-center bg-no-repeat min-h-screen home-hero"
           style={{ backgroundImage: "url('/krishanhomeimg.jpeg')" }}>
-          <div className="absolute inset-0 bg-black/40 z-0"></div>
+          <div className="absolute inset-0 bg-black/40 z-0 home-hero-overlay"></div>
 
           {/* Hero Section - Responsive Alignment */}
           <div className="flex items-center justify-center md:justify-start min-h-screen relative z-10 px-4 sm:px-6 lg:px-8">
@@ -24,7 +24,7 @@ export default function Home() {
             Receive divine wisdom from the Bhagavad Gita.
           </p>
           <div className="pt-4 flex justify-center lg:justify-start">
-            <Link href="/chat" className="btn-gold w-full sm:w-auto px-10 py-4 text-base md:text-lg">
+            <Link href="/chat" className="btn-gold inline-block px-10 py-4 text-base md:text-lg">
               <span>🛞</span> Start Conversation
             </Link>
           </div>
