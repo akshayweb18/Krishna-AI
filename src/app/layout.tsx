@@ -1,38 +1,46 @@
 import './globals.css'
 import React from 'react'
-import Link from 'next/link'
 import { ReactNode } from 'react'
+import { Inter, Playfair_Display, Cinzel } from 'next/font/google'
 import BottomNav from '../components/BottomNav'
 import ServiceWorkerRegistrar from '../components/ServiceWorkerRegistrar'
+import Header from '../components/Header'
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', display: 'swap' })
+const cinzel = Cinzel({ subsets: ['latin'], variable: '--font-cinzel', display: 'swap' })
 
 export const metadata = {
   title: 'Krishna AI – Divine Bhagavad Gita Guide',
   description: 'Experience the wisdom of the Bhagavad Gita with Krishna AI. Divine, fast, and spiritual.',
 }
 
-import Header from '../components/Header'
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-      </head>
-      <body className="antialiased selection:bg-divine-gold selection:text-black">
-        <Header />
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 pt-24">
-          <main className="pb-32 md:pb-20">{children}</main>
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${cinzel.variable} scroll-smooth`}>
+      <body className="antialiased selection:bg-[#D4AF37] selection:text-black flex flex-col min-h-screen bg-[#05070A] text-slate-100 font-sans">
+        {/* Persistent Global Background Atmosphere - More Vibrant & Divine */}
+        <div className="fixed inset-0 pointer-events-none hardware-accelerated overflow-hidden z-0">
+          {/* Indigo/Amethyst Glow */}
+          <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-[#4F46E5]/[0.08] blur-[150px] rounded-full" />
+          {/* Royal Saffron Glow */}
+          <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#D4AF37]/[0.05] blur-[150px] rounded-full" />
+          {/* Subtle Center Depth */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-radial from-[#1E1235]/20 to-transparent" />
         </div>
-
-
+        
+        <Header />
+        
+        {/* Main wrapper */}
+        <div className="flex-1 w-full relative z-10 pt-20">
+          <main className="max-w-7xl mx-auto">
+            {children}
+          </main>
+        </div>
+        
         <BottomNav />
         <ServiceWorkerRegistrar />
       </body>
     </html>
   )
 }
-
-
-

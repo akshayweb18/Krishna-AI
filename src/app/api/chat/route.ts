@@ -1,80 +1,85 @@
 import { NextResponse } from 'next/server'
 import krishnaSystem from '../../../lib/krishnaSystem'
 
-type IncomingMessage = { role?: string; content: string }
-
-function getApiKey() {
-  return process.env.OPENAI_API_KEY || process.env.OPENAI_KEY || process.env.GEMINI_API_KEY || process.env.GEMINI_KEY || null
-}
-
 export async function POST(req: Request) {
-  const body = await req.json().catch(() => ({}))
-  // Accept either { messages: [...] } or { prompt: '...' }
-  const incoming: IncomingMessage[] = Array.isArray(body?.messages)
-    ? body.messages
-    : body?.prompt
-      ? [{ role: 'user', content: String(body.prompt) }]
-      : []
+  try {
+    const body = await req.json().catch(() => ({}))
+    const incoming = Array.isArray(body?.messages) ? body.messages : []
+    const GEMINI_API_KEY = process.env.GEMINI_API_KEY
 
-  const messages = [krishnaSystem as any, ...incoming]
-
-  const API_KEY = getApiKey()
-  const model = process.env.OPENAI_MODEL || process.env.GEMINI_MODEL || 'gpt-4o-mini'
-  const stream = body?.stream !== false // default true
-
-  if (API_KEY) {
-    // Prefer streaming responses for better UX
-    try {
-      const payload: any = { model, messages, temperature: 0.2 }
-      if (stream) payload.stream = true
-
-      const resp = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${API_KEY}`,
-        },
-        body: JSON.stringify(payload),
+    if (!GEMINI_API_KEY) {
+      return NextResponse.json({ 
+        message: { 
+          role: 'assistant', 
+          content: "Pranam! I am in deep meditation (Missing GEMINI_API_KEY). Please add it to your environment to begin our conversation." 
+        } 
       })
-
-      if (!resp.ok) {
-        const text = await resp.text()
-        return NextResponse.json({ error: 'Upstream API error', detail: text }, { status: 502 })
-      }
-
-      // If streaming, pipe the upstream body directly to the client
-      if (stream && resp.body) {
-        return new Response(resp.body, {
-          headers: {
-            'Content-Type': 'text/event-stream; charset=utf-8',
-          },
-        })
-      }
-
-      const data = await resp.json()
-      const aiMessage = data?.choices?.[0]?.message ?? null
-      return NextResponse.json({ message: aiMessage, raw: data })
-    } catch (e: any) {
-      return NextResponse.json({ error: 'AI request failed', detail: String(e) }, { status: 502 })
     }
+
+    const contents = incoming
+      .filter((m: any) => m.role !== 'system')
+      .map((m: any) => ({
+        role: m.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: m.content }]
+      }))
+
+    if (contents.length > 0 && contents[0].role === 'model') {
+      contents.unshift({ role: 'user', parts: [{ text: "Pranam, Krishna." }] })
+    }
+
+    const MODELS = ["gemini-2.0-flash", "gemini-2.0-pro", "gemini-1.5-flash"]
+
+    const callGemini = async (modelName: string) => {
+      try {
+        const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${GEMINI_API_KEY}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            contents,
+            system_instruction: {
+              parts: [{ text: krishnaSystem.content }]
+            }
+          })
+        })
+        return resp
+      } catch (e) {
+        return null
+      }
+    }
+
+    let finalResp = null
+    for (const modelName of MODELS) {
+      const resp = await callGemini(modelName)
+      if (resp && resp.ok) {
+        finalResp = resp
+        break
+      }
+      if (resp && resp.status !== 404) {
+        finalResp = resp
+        break
+      }
+    }
+
+    if (!finalResp) {
+      return NextResponse.json({ error: 'Connection failed', detail: 'Could not connect to any Gemini models' }, { status: 503 })
+    }
+
+    if (!finalResp.ok) {
+      const err = await finalResp.json().catch(() => ({ error: { message: 'Unknown error' } }))
+      return NextResponse.json({ 
+        error: 'Gemini API Error', 
+        detail: err?.error?.message || JSON.stringify(err) 
+      }, { status: finalResp.status })
+    }
+
+    const data = await finalResp.json()
+    const aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Forgive me, but I am unable to respond."
+    
+    return NextResponse.json({ 
+      message: { role: 'assistant', content: aiText } 
+    })
+
+  } catch (error: any) {
+    return NextResponse.json({ error: 'Internal Server Error', detail: error.message }, { status: 500 })
   }
-
-  // Fallback persona reply when no API key provided
-  const lastUser = incoming.length ? incoming[incoming.length - 1].content : ''
-  const hindi = lastUser ? `शांत रहें और स्पष्ट रहें। (${lastUser.slice(0, 80)})` : 'नमस्ते — कैसे मदद करूँ?'
-  const english = lastUser ? `Stay calm and be clear. (${lastUser.slice(0, 80)})` : 'Hello — how can I help?'
-  const shloka = 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।'
-  const shlokaTrans = 'Your right is to perform your duty, not to the fruits thereof.'
-
-  return NextResponse.json({
-    message: {
-      role: 'assistant',
-      content: `${hindi}\n\n${english}\n\n${shloka}\n${shlokaTrans}`,
-    },
-    note: 'No API key configured — returned persona fallback',
-  })
-}
-
-export async function GET() {
-  return NextResponse.json({ message: 'Chat API ready — POST { messages:[{role,content}] } or { prompt } (stream=true by default)' })
 }

@@ -5,15 +5,10 @@ import React from 'react'
 export const dynamic = 'force-static'
 
 export default function GitaIndex() {
-  return (
-    <main className="min-h-screen bg-[#0A0E1A] text-slate-100 font-sans selection:bg-[#D4AF37] selection:text-black">
-      {/* Background Atmosphere */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-[#D4AF37]/[0.05] blur-[150px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#D4AF37]/[0.03] blur-[150px] rounded-full" />
-      </div>
+    <div className="relative min-h-screen bg-[#0C0A1F]/60 backdrop-blur-[1px] hardware-accelerated">
+      {/* Background Atmosphere is now global in layout.tsx */}
 
-      <div className="relative max-w-6xl mx-auto py-12 md:py-24 px-6">
+      <div className="relative py-4 md:py-8">
         <header className="text-center space-y-6 mb-20">
           <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 mb-4 animate-fade-in">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#D4AF37]">Shrimad Bhagavad Gita</span>
@@ -69,10 +64,10 @@ export default function GitaIndex() {
           ))}
         </div>
 
-        <footer className="mt-32 text-center opacity-40 hover:opacity-100 transition-opacity">
+        <div className="mt-32 text-center opacity-40 hover:opacity-100 transition-opacity">
           <p className="text-[10px] font-black uppercase tracking-[1em] text-slate-500">Om Shanti Shanti Shanti</p>
-        </footer>
+        </div>
       </div>
-    </main>
+    </div>
   )
 }

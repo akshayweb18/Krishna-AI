@@ -34,18 +34,14 @@ export default function ChapterPage() {
   }, [activeTab, query])
 
   return (
-    <main className="min-h-screen bg-[#0A0E1A] text-slate-100 font-sans selection:bg-[#D4AF37] selection:text-black pb-24">
-      {/* Background Atmosphere */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#D4AF37]/[0.03] blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#D4AF37]/[0.02] blur-[120px] rounded-full" />
-      </div>
+    <main className="min-h-screen bg-[#0C0A1F]/60 backdrop-blur-[1px] hardware-accelerated text-slate-100 font-sans selection:bg-[#D4AF37] selection:text-black pb-24">
+      {/* Background Atmosphere is now global in layout.tsx */}
 
       <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-10 lg:py-24">
         <header className="mb-16 space-y-8 text-center md:text-left">
           <div className="space-y-4">
             <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 animate-fade-in">
-               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#D4AF37]">The Eternal Wisdom</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#D4AF37]">The Eternal Wisdom</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white divine-serif animate-fade-in" style={{ animationDelay: '0.1s' }}>
               Explore <span className="gold-text italic">Adhyayas</span>
@@ -75,11 +71,10 @@ export default function ChapterPage() {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`flex-1 md:flex-none rounded-[14px] px-6 py-2.5 text-xs font-black uppercase tracking-widest transition duration-300 ${
-                      active
-                        ? 'bg-[#D4AF37] text-black shadow-[0_10px_25px_rgba(212,175,55,0.2)]'
-                        : 'text-slate-500 hover:text-white'
-                    }`}
+                    className={`flex-1 md:flex-none rounded-[14px] px-6 py-2.5 text-xs font-black uppercase tracking-widest transition duration-300 ${active
+                      ? 'bg-[#D4AF37] text-black shadow-[0_10px_25px_rgba(212,175,55,0.2)]'
+                      : 'text-slate-500 hover:text-white'
+                      }`}
                   >
                     {tab}
                   </button>
@@ -110,10 +105,10 @@ export default function ChapterPage() {
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
+                    <div className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
                       Chapter {chapter.number}
                     </div>
-                    <h2 className="mt-1 text-2xl font-bold text-white divine-serif group-hover:gold-text transition-colors truncate">
+                    <h2 className="mt-1 text-2xl font-bold text-white divine-serif group-hover:gold-text transition-colors ">
                       {chapter.title}
                     </h2>
                     <p className="mt-2 text-sm text-slate-400 font-light line-clamp-2 leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">

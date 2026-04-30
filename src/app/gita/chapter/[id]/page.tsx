@@ -24,9 +24,9 @@ async function getChapterData(id: number) {
 export default async function ChapterPage({ params }: { params: Promise<{ id: string }> }) {
   const { id: rawId } = await params
   const id = Number(rawId)
-  
+
   if (!rawId || Number.isNaN(id)) notFound()
-  
+
   const overview = chaptersOverview.find((c) => c.number === id)
   if (!overview) notFound()
 
@@ -45,13 +45,13 @@ export default async function ChapterPage({ params }: { params: Promise<{ id: st
       <ResumeReading chapterId={id} />
 
       <div className="relative w-full mx-auto py-8 md:py-16 px-4 md:px-12 lg:px-20">
-        
+
         <nav className="mb-12 flex items-center justify-between max-w-7xl mx-auto">
           <Link href="/gita" className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.4em] text-slate-500 hover:text-[#D4AF37] transition-all">
             <span className="w-6 h-6 flex items-center justify-center rounded-full border border-white/5 group-hover:border-[#D4AF37]/30 group-hover:bg-[#D4AF37]/10">←</span>
             Back to Gita
           </Link>
-          
+
           <div className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600">
             {id} of 18
           </div>
@@ -64,11 +64,11 @@ export default async function ChapterPage({ params }: { params: Promise<{ id: st
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#D4AF37]">Adhyaya {id}</span>
             </div>
           </div>
-          
+
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white divine-serif mb-4 animate-fade-in" style={{ animationDelay: '0.1s' }}>
             {chapterData.chapterTitle}
           </h1>
-          
+
           <p className="text-lg md:text-xl text-slate-400 font-light italic max-w-2xl mx-auto leading-relaxed opacity-90 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             {chapterData.description}
           </p>
@@ -88,7 +88,7 @@ export default async function ChapterPage({ params }: { params: Promise<{ id: st
               <p className="text-[10px] font-black uppercase tracking-[1.2em] text-slate-600">Iti Shrimad Bhagavad Gita</p>
               <h3 className="text-2xl md:text-3xl font-bold text-white/40 divine-serif">The Song of God</h3>
             </div>
-            
+
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
               <Link href="/gita" className="px-10 py-4 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:bg-white/10 transition-all">
                 All Chapters

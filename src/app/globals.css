@@ -310,6 +310,32 @@ h3,
   margin-top: 2px;
 }
 
+/* Prevent Flicker & Smooth Transitions */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #0C0A1F;
+  color: #f8fafc;
+  overscroll-behavior-y: none;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.no-flicker {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
 /* Bottom Nav - Fast and Responsive: apply only on small screens so Tailwind responsive utilities can override on larger */
 @media (max-width: 767px) {
   .bottom-nav-mobile {
@@ -387,4 +413,24 @@ h3,
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* Performance Utilities */
+.hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+.will-change-scroll {
+  will-change: scroll-position;
 }

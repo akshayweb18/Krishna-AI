@@ -31,7 +31,7 @@ export default function ResumeReading({ chapterId }: { chapterId: number }) {
 
   return (
     <div className="fixed bottom-24 right-6 md:right-12 z-[100] animate-fade-in">
-      <button 
+      <button
         onClick={scrollToLastRead}
         className="group flex items-center gap-3 px-6 py-3 rounded-full bg-[#D4AF37] text-black shadow-[0_15px_40px_rgba(212,175,55,0.4)] hover:scale-105 active:scale-95 transition-all"
       >

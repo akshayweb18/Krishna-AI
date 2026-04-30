@@ -5,7 +5,7 @@ export function getDailyShlok() {
   // pick a verse deterministically by day from the authentic collection
   const verseIndex = day % authenticGita.verses.length
   const verse = authenticGita.verses[verseIndex]
-  
+
   return {
     sanskrit: verse.sanskrit,
     hindi: verse.anuvad_hindi,
