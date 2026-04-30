@@ -11,7 +11,7 @@
   --divine-glass: rgba(255, 255, 255, 0.03);
   --divine-glass-heavy: rgba(255, 255, 255, 0.05);
   --divine-border: rgba(255, 255, 255, 0.06);
-  
+
   --font-serif: 'Cinzel', 'Playfair Display', serif;
   --font-sans: 'Inter', 'Montserrat', sans-serif;
   --radius-2xl: 32px;
@@ -19,7 +19,8 @@
 }
 
 * {
-  touch-action: manipulation; /* Eliminate 300ms delay */
+  touch-action: manipulation;
+  /* Eliminate 300ms delay */
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -30,21 +31,25 @@
     background-size: cover;
     position: relative;
   }
+
   .home-hero::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 2;
     pointer-events: none;
-    background: linear-gradient(to left, rgba(0,0,0,0.65), rgba(0,0,0,0.25));
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25));
   }
+
   /* make the existing overlay slightly lighter so combined overlay feels balanced */
   .home-hero .home-hero-overlay {
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
+
   /* ensure hero content sits above overlays */
-  .home-hero > .z-10, .home-hero .z-10 {
+  .home-hero>.z-10,
+  .home-hero .z-10 {
     z-index: 10;
     position: relative;
   }
@@ -75,7 +80,10 @@ body::before {
 }
 
 /* Typography Scaling */
-h1, h2, h3, .divine-serif {
+h1,
+h2,
+h3,
+.divine-serif {
   font-family: var(--font-serif);
   letter-spacing: -0.01em;
   line-height: 1.1;
@@ -112,7 +120,7 @@ h1, h2, h3, .divine-serif {
   border-radius: 12px;
   font-weight: 700;
   border: none;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   display: inline-flex;
   align-items: center;
 }
@@ -121,18 +129,20 @@ h1, h2, h3, .divine-serif {
 .input {
   padding: 0.7rem 0.9rem;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
   color: var(--divine-text);
   outline: none;
   transition: box-shadow 0.12s ease, border-color 0.12s ease;
 }
+
 .input:focus {
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-  border-color: rgba(212,175,55,0.16);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  border-color: rgba(212, 175, 55, 0.16);
 }
+
 .input::placeholder {
-  color: rgba(226,232,240,0.6);
+  color: rgba(226, 232, 240, 0.6);
 }
 
 /* Glass Card - Mobile Optimized */
@@ -140,15 +150,15 @@ h1, h2, h3, .divine-serif {
   background: var(--divine-glass);
   backdrop-filter: blur(16px);
   border: 1px solid var(--divine-border);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
   border-radius: var(--radius-xl);
   transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
 .glass-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255,255,255,0.08);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
 }
 
 .glass-card:active {
@@ -161,7 +171,7 @@ h1, h2, h3, .divine-serif {
   position: relative;
   background: var(--divine-glass);
   border: none;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 12px 36px rgba(0,0,0,0.25);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 12px 36px rgba(0, 0, 0, 0.25);
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
@@ -171,23 +181,23 @@ h1, h2, h3, .divine-serif {
   inset: -1px;
   z-index: -1;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(212,175,55,0.7), rgba(255,255,255,0.12) 35%, rgba(212,175,55,0.15));
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.7), rgba(255, 255, 255, 0.12) 35%, rgba(212, 175, 55, 0.15));
   filter: blur(10px);
   opacity: 0.75;
 }
 
 .premium-border:hover {
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12), 0 20px 60px rgba(212,175,55,0.24);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 20px 60px rgba(212, 175, 55, 0.24);
   transform: translateY(-3px);
 }
 
 .hero-border {
   position: relative;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 20px 60px rgba(0,0,0,0.30);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 20px 60px rgba(0, 0, 0, 0.30);
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
@@ -197,21 +207,21 @@ h1, h2, h3, .divine-serif {
   inset: -1px;
   z-index: -1;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,215,0,0.35), rgba(255,255,255,0.1) 30%, rgba(255,215,0,0.12));
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.35), rgba(255, 255, 255, 0.1) 30%, rgba(255, 215, 0, 0.12));
   filter: blur(14px);
   opacity: 0.9;
 }
 
 .hero-border:hover {
   transform: translateY(-4px);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10), 0 28px 90px rgba(212,175,55,0.28);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.10), 0 28px 90px rgba(212, 175, 55, 0.28);
 }
 
 .feature-card {
   position: relative;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 0 14px 36px rgba(0,0,0,0.22);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 14px 36px rgba(0, 0, 0, 0.22);
   border-radius: var(--radius-xl);
   overflow: hidden;
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
@@ -223,20 +233,28 @@ h1, h2, h3, .divine-serif {
   inset: -1px;
   z-index: -1;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(212,175,55,0.24), rgba(255,255,255,0.08) 30%, rgba(212,175,55,0.14));
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.24), rgba(255, 255, 255, 0.08) 30%, rgba(212, 175, 55, 0.14));
   filter: blur(12px);
   opacity: 0.85;
 }
 
 .feature-card:hover {
   transform: translateY(-3px);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 20px 56px rgba(212,175,55,0.24);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 20px 56px rgba(212, 175, 55, 0.24);
 }
 
 @keyframes shimmer {
-  0% { left: -150%; }
-  50% { left: 150%; }
-  100% { left: 150%; }
+  0% {
+    left: -150%;
+  }
+
+  50% {
+    left: 150%;
+  }
+
+  100% {
+    left: 150%;
+  }
 }
 
 /* Top Nav from Image */
@@ -274,7 +292,8 @@ h1, h2, h3, .divine-serif {
   transition: color 0.2s ease;
 }
 
-.top-nav-link:hover, .top-nav-link.active {
+.top-nav-link:hover,
+.top-nav-link.active {
   color: var(--divine-gold);
 }
 
@@ -347,6 +366,7 @@ h1, h2, h3, .divine-serif {
   .hero-title {
     font-size: 2.75rem;
   }
+
   .glass-card {
     border-radius: 20px;
   }
@@ -358,10 +378,13 @@ h1, h2, h3, .divine-serif {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
-
-
-

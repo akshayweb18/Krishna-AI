@@ -18,7 +18,7 @@ export default function ChapterControls() {
 
   useEffect(() => {
     try { localStorage.setItem('verseSize', size) } catch {}
-    document.documentElement.style.setProperty('--verse-font-size', size === 'sm' ? '0.95rem' : size === 'lg' ? '1.125rem' : '1rem')
+    document.documentElement.style.setProperty('--verse-font-size', size === 'sm' ? '0.85rem' : size === 'lg' ? '1.15rem' : '1rem')
   }, [size])
 
   useEffect(() => {
@@ -31,26 +31,46 @@ export default function ChapterControls() {
   }, [showSanskrit, showHindi, showEnglish])
 
   return (
-    <div className="flex items-center gap-4 mb-4 flex-wrap">
+    <div className="inline-flex items-center gap-6 p-4 px-6 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
       <div className="flex items-center gap-2">
-        <div className="text-sm text-gray-600 dark:text-gray-300">Text size:</div>
-        <button className={`px-2 py-1 rounded ${size==='sm' ? 'bg-gray-200 dark:bg-gray-800' : ''}`} onClick={() => setSize('sm')}>A-</button>
-        <button className={`px-2 py-1 rounded ${size==='base' ? 'bg-gray-200 dark:bg-gray-800' : ''}`} onClick={() => setSize('base')}>A</button>
-        <button className={`px-2 py-1 rounded ${size==='lg' ? 'bg-gray-200 dark:bg-gray-800' : ''}`} onClick={() => setSize('lg')}>A+</button>
+        <ControlButton active={size === 'sm'} onClick={() => setSize('sm')} label="A-" />
+        <ControlButton active={size === 'base'} onClick={() => setSize('base')} label="A" />
+        <ControlButton active={size === 'lg'} onClick={() => setSize('lg')} label="A+" />
       </div>
 
-      <div className="flex items-center gap-2">
-        <div className="text-sm text-gray-600 dark:text-gray-300">Show:</div>
-        <label className="flex items-center gap-1 text-sm">
-          <input type="checkbox" checked={showSanskrit} onChange={() => setShowSanskrit(s => !s)} /> Sanskrit
-        </label>
-        <label className="flex items-center gap-1 text-sm">
-          <input type="checkbox" checked={showHindi} onChange={() => setShowHindi(s => !s)} /> Hindi
-        </label>
-        <label className="flex items-center gap-1 text-sm">
-          <input type="checkbox" checked={showEnglish} onChange={() => setShowEnglish(s => !s)} /> English
-        </label>
+      <div className="w-[1px] h-4 bg-white/10"></div>
+
+      <div className="flex items-center gap-4">
+        <Toggle label="SAN" active={showSanskrit} onClick={() => setShowSanskrit(!showSanskrit)} />
+        <Toggle label="HIN" active={showHindi} onClick={() => setShowHindi(!showHindi)} />
+        <Toggle label="ENG" active={showEnglish} onClick={() => setShowEnglish(!showEnglish)} />
       </div>
     </div>
+  )
+}
+
+function ControlButton({ active, onClick, label }) {
+  return (
+    <button 
+      onClick={onClick}
+      className={`w-8 h-8 rounded-lg text-[10px] font-black transition-all ${
+        active ? 'bg-[#D4AF37] text-black' : 'text-slate-500 hover:text-white hover:bg-white/5'
+      }`}
+    >
+      {label}
+    </button>
+  )
+}
+
+function Toggle({ label, active, onClick }) {
+  return (
+    <button 
+      onClick={onClick}
+      className={`text-[9px] font-black tracking-widest transition-all ${
+        active ? 'text-[#D4AF37]' : 'text-slate-700 hover:text-slate-500'
+      }`}
+    >
+      {label}
+    </button>
   )
 }

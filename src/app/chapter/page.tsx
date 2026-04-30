@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { useMemo, useState } from 'react'
-import gita from '../../lib/gita.json'
+import chaptersOverview from '../../data/chapters-overview.json'
+import React from 'react'
 
 const tabs = ['All Chapters', 'Favorites', 'Recent']
 
@@ -12,102 +13,121 @@ export default function ChapterPage() {
 
   const chapters = useMemo(() => {
     const term = query.trim().toLowerCase()
-    let filtered = gita.chapters
+    let filtered = chaptersOverview
 
     if (activeTab === 'Favorites') {
-      filtered = gita.chapters.filter((chapter) => chapter.id % 2 === 0)
+      // Dummy logic for now, or use localStorage
+      filtered = chaptersOverview.filter((chapter) => chapter.number % 2 === 0)
     } else if (activeTab === 'Recent') {
-      filtered = gita.chapters.slice(-5).reverse()
+      filtered = chaptersOverview.slice(-5).reverse()
     }
 
     if (!term) return filtered
 
     return filtered.filter((chapter) => {
       return (
-        String(chapter.id).includes(term) ||
-        chapter.name.toLowerCase().includes(term) ||
-        (chapter.subtitle && chapter.subtitle.toLowerCase().includes(term))
+        String(chapter.number).includes(term) ||
+        chapter.title.toLowerCase().includes(term) ||
+        (chapter.description && chapter.description.toLowerCase().includes(term))
       )
     })
   }, [activeTab, query])
 
   return (
-    <main className="min-h-screen px-4 py-8 sm:px-6 lg:px-10">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-8 space-y-6">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div className="space-y-3">
-              <p className="text-sm uppercase tracking-[0.35em] text-[#d4af37]/75">Explore Chapters</p>
-              <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white">Explore Chapters</h1>
-              <p className="max-w-2xl text-sm text-slate-400">Find the right chapter, see verse counts, and navigate with a clean golden UI.</p>
+    <main className="min-h-screen bg-[#0A0E1A] text-slate-100 font-sans selection:bg-[#D4AF37] selection:text-black pb-24">
+      {/* Background Atmosphere */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#D4AF37]/[0.03] blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#D4AF37]/[0.02] blur-[120px] rounded-full" />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-10 lg:py-24">
+        <header className="mb-16 space-y-8 text-center md:text-left">
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 animate-fade-in">
+               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#D4AF37]">The Eternal Wisdom</span>
             </div>
-            <button
-              type="button"
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#121217]/90 text-[#d4af37] shadow-[0_12px_40px_rgba(212,175,55,0.16)] transition hover:border-[#d4af37]/50"
-              aria-label="Filter"
-            >
-              ⚡
-            </button>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white divine-serif animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              Explore <span className="gold-text italic">Adhyayas</span>
+            </h1>
+            <p className="max-w-2xl text-lg text-slate-400 font-light leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              Discover the 18 chapters of the Bhagavad Gita. Filter by favorites, search for specific shlokas, or browse the entire collection.
+            </p>
           </div>
 
-          <div className="relative">
-            <input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search shloka, chapter..."
-              className="w-full rounded-full border border-white/10 bg-white/5 px-5 py-4 text-white placeholder:text-slate-500 outline-none shadow-[0_16px_60px_rgba(0,0,0,0.3)] transition focus:border-[#d4af37]/60 focus:ring-2 focus:ring-[#d4af37]/15"
-            />
-          </div>
+          <div className="flex flex-col md:flex-row gap-6 items-center animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="relative flex-1 w-full">
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search chapter title or description..."
+                className="w-full rounded-[20px] border border-white/10 bg-white/[0.02] px-6 py-4 text-white placeholder:text-slate-600 outline-none backdrop-blur-md transition focus:border-[#D4AF37]/40 focus:bg-white/[0.04]"
+              />
+              <div className="absolute right-6 top-1/2 -translate-y-1/2 text-[#D4AF37]/40">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </div>
+            </div>
 
-          <div className="flex flex-wrap gap-3 rounded-3xl border border-white/10 bg-white/5 p-2 shadow-[0_15px_40px_rgba(0,0,0,0.18)]">
-            {tabs.map((tab) => {
-              const active = activeTab === tab
-              return (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`rounded-2xl px-4 py-3 text-sm font-semibold transition ${
-                    active
-                      ? 'bg-linear-to-r from-[#fbbf24] via-[#d4af37] to-[#fcd34d] text-slate-950 shadow-[0_12px_30px_rgba(212,175,55,0.2)]'
-                      : 'text-slate-400 hover:text-white'
-                  }`}
-                >
-                  {tab}
-                </button>
-              )
-            })}
+            <div className="flex gap-2 p-1.5 rounded-[20px] bg-white/[0.03] border border-white/10 backdrop-blur-md w-full md:w-auto">
+              {tabs.map((tab) => {
+                const active = activeTab === tab
+                return (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`flex-1 md:flex-none rounded-[14px] px-6 py-2.5 text-xs font-black uppercase tracking-widest transition duration-300 ${
+                      active
+                        ? 'bg-[#D4AF37] text-black shadow-[0_10px_25px_rgba(212,175,55,0.2)]'
+                        : 'text-slate-500 hover:text-white'
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                )
+              })}
+            </div>
           </div>
-        </div>
+        </header>
 
-        <div className="grid gap-4">
+        <div className="grid gap-6 md:grid-cols-2 animate-fade-in" style={{ animationDelay: '0.4s' }}>
           {chapters.length === 0 ? (
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-10 text-center text-sm text-slate-400">
-              No chapters found. Try a different search term or tab.
+            <div className="col-span-full rounded-[32px] border border-white/5 bg-white/[0.01] p-20 text-center">
+              <div className="text-4xl mb-4 opacity-20">ॐ</div>
+              <p className="text-slate-500 font-light tracking-wide">No chapters found matching your search.</p>
             </div>
           ) : (
             chapters.map((chapter) => (
               <Link
-                key={chapter.id}
-                href={`/gita/chapter/${chapter.id}`}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-black/40 p-5 sm:p-6 transition hover:-translate-y-1 hover:border-[#d4af37] hover:shadow-[0_24px_70px_rgba(212,175,55,0.18)]"
+                key={chapter.number}
+                href={`/gita/chapter/${chapter.number}`}
+                className="group relative overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.01] p-8 transition-all duration-500 hover:bg-white/[0.03] hover:border-[#D4AF37]/30 hover:translate-y-[-4px]"
               >
-                <div className="absolute inset-0 bg-linear-to-r from-[#d4af37]/8 via-transparent to-[#f59e0b]/8 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
-                <div className="relative flex items-center gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-3xl border border-[#d4af37]/20 bg-[#111214]/95 shadow-[inset_0_0_18px_rgba(255,255,255,0.04)]">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-[#1f1c12] via-[#2e2410] to-[#3f2f14] text-2xl text-[#fbbf24] shadow-md">
-                      ॐ
+                <div className="relative flex items-center gap-6">
+                  <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-[20px] border border-white/10 bg-white/5 group-hover:border-[#D4AF37]/40 transition-colors">
+                    <div className="text-2xl font-serif text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
+                      {chapter.number}
                     </div>
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="text-xs uppercase tracking-[0.32em] text-[#d4af37]/75">Chapter {chapter.id}</div>
-                    <h2 className="mt-2 text-lg font-semibold text-white">{chapter.name}</h2>
-                    <p className="mt-1 text-sm text-slate-400">{chapter.subtitle}</p>
+                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
+                      Chapter {chapter.number}
+                    </div>
+                    <h2 className="mt-1 text-2xl font-bold text-white divine-serif group-hover:gold-text transition-colors truncate">
+                      {chapter.title}
+                    </h2>
+                    <p className="mt-2 text-sm text-slate-400 font-light line-clamp-2 leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">
+                      {chapter.description}
+                    </p>
                   </div>
 
-                  <div className="ml-auto flex flex-col items-end gap-1 text-right">
-                    <span className="text-sm font-semibold text-[#f5e0a0]">{chapter.verses?.length ?? 0} Verses</span>
-                    <span className="text-2xl text-slate-400 transition group-hover:text-[#d4af37]">→</span>
+                  <div className="ml-auto hidden sm:flex flex-col items-end gap-2">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#D4AF37]/40">
+                      {chapter.verses} Verses
+                    </span>
+                    <div className="w-8 h-8 flex items-center justify-center rounded-full border border-white/5 group-hover:border-[#D4AF37]/30 group-hover:translate-x-1 transition-all">
+                      <span className="text-xs">→</span>
+                    </div>
                   </div>
                 </div>
               </Link>

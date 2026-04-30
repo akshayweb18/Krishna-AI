@@ -14,10 +14,12 @@
   },
   "dependencies": {
     "framer-motion": "^12.38.0",
+    "fs": "^0.0.1-security",
     "next": "16.2.4",
     "pdf-parse": "^1.1.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-pdf": "^10.4.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

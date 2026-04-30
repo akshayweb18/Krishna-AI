@@ -1,0 +1,118 @@
+{
+  "source": "Geeta Prabodhini - Authentic Verses Reference",
+  "description": "Curated Bhagavad Gita verses with authentic meanings from Geeta Prabodhini commentary",
+  "verses": [
+    {
+      "id": "2.2",
+      "chapter": 2,
+      "verse": 2,
+      "hindi_title": "क्लैब्यं मा स्म गमः पार्थ नैतत्त्वयि उपपद्यते।",
+      "sanskrit": "न त्वेवाहं जातु नासं न त्वं नेमे जनाधिपाः।\nन चैव न भविष्यामः सर्वे वयमतः परम्॥२.१२॥",
+      "anuvad_hindi": "हे पार्थ! तू कायरता को मत प्राप्त हो। यह तेरे लिये योग्य नहीं है।",
+      "arth": "आत्मा को कभी भय नहीं होता क्योंकि आत्मा अनश्वर है। शरीर बदलता है, लेकिन आत्मा सदा रहती है।",
+      "intent_keywords": ["courage", "विषाद"],
+      "english_translation": "Never was there a time when I did not exist, nor you, nor all these kings; nor in the future shall any of us cease to be."
+    },
+    {
+      "id": "2.47",
+      "chapter": 2,
+      "verse": 47,
+      "hindi_title": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।",
+      "sanskrit": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥२.४७॥",
+      "anuvad_hindi": "तेरा अधिकार केवल कर्म में है, कभी फल में नहीं। इसलिए कर्म कर, पर कर्म का फल चाहने वाला मत हो।",
+      "arth": "अपने कर्तव्य पर ध्यान दो, परिणाम पर नहीं। फल की चिंता छोड़ो और निष्ठा से काम करो।",
+      "intent_keywords": ["duty", "action", "karma", "karma-yoga", "कर्त्तव्य", "कर्म"],
+      "english_translation": "You have a right to perform your prescribed duty, but you are not entitled to the fruits of action."
+    },
+    {
+      "id": "2.14",
+      "chapter": 2,
+      "verse": 14,
+      "sanskrit": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः।\nआगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत॥२.१४॥",
+      "anuvad_hindi": "हे कुन्तीपुत्र! सुख-दुःख, सर्दी-गर्मी आदि इन्द्रियों के स्पर्श से उत्पन्न होते हैं। ये अनिश्चित और क्षण-भंगुर हैं, इन्हें सहन कर।",
+      "arth": "बाहरी सुख-दुःख नित्य नहीं हैं। शांत मन से सभी परिस्थितियों को स्वीकार करो। इसी में प्रज्ञा है।",
+      "intent_keywords": ["equanimity", "mind", "sthita-prajna", "samatva", "समता", "मन", "fear", "dar", "bhay"],
+      "english_translation": "The contact between the senses and objects gives rise to feelings of heat and cold, pleasure and pain. These are not permanent; they come and go. Therefore, learn to endure them."
+    },
+    {
+      "id": "2.62",
+      "chapter": 2,
+      "verse": 62,
+      "sanskrit": "ध्यायतो विषयान्पुंसः सङ्गस्तेषूपजायते।\nसङ्गात्सञ्जायते कामः कामात्क्रोधोऽभिजायते॥२.६२॥",
+      "anuvad_hindi": "इन्द्रियों के विषयों का चिन्तन करने से उनमें आसक्ति उत्पन्न होती है। आसक्ति से कामना जन्म लेती है, और कामना से क्रोध उत्पन्न होता है।",
+      "arth": "मन जहाँ जाता है, वहीं समस्याएं होती हैं। विषयों से मन को हटाओ। आसक्ति क्रोध की जननी है।",
+      "intent_keywords": ["anger", "kama", "desire", "क्रोध", "काम", "आसक्ति"],
+      "english_translation": "When a person thinks of objects, attachment to them arises; from attachment, desire is born; from desire, anger arises."
+    },
+    {
+      "id": "3.5",
+      "chapter": 3,
+      "verse": 5,
+      "sanskrit": "न हि कश्चित्क्षणमपि जातु तिष्ठत्यकर्मकृत्।\nकार्यते ह्यवशः कर्म सर्वः प्रकृतिजैर्गुणैः॥३.५॥",
+      "anuvad_hindi": "कोई भी जीव एक क्षण भी बिना कर्म किए नहीं रह सकता। सभी प्रकृति के गुणों द्वारा बाध्य होकर कर्म करते हैं।",
+      "arth": "निष्क्रिय रहना असंभव है। हर व्यक्ति को अपने स्वभाव के अनुसार कर्म करने होते हैं। इसलिए कर्म करो, पर उसके फल की चिंता मत करो।",
+      "intent_keywords": ["duty", "karma", "action", "निष्क्रियता", "प्रकृति"],
+      "english_translation": "No one can remain without performing action even for a moment; all are forced to perform actions by the gunas of nature."
+    },
+    {
+      "id": "5.10",
+      "chapter": 5,
+      "verse": 10,
+      "sanskrit": "ब्रह्मण्य् आधाय कर्माणि सङ्गं त्यक्त्वा करोति यः।\nलिप्यते न स पापेन पद्मपत्रमिवाम्भसा॥५.१०॥",
+      "anuvad_hindi": "जो सभी कर्मों को ब्रह्म को समर्पित करके और आसक्ति को त्यागकर कार्य करता है, वह पाप से लिप्त नहीं होता, जैसे कमल का पत्ता पानी से नहीं भिगता।",
+      "arth": "सभी कर्मों को परमात्मा को समर्पित कर दो। तब तुम निर्लिप्त रहोगे। यही सही भाव है।",
+      "intent_keywords": ["devotion", "surrender", "dedication", "समर्पण", "भक्ति"],
+      "english_translation": "One who performs actions offering them to Brahman and abandoning attachment is untainted by sin, just as a lotus leaf is untouched by water."
+    },
+    {
+      "id": "6.5",
+      "chapter": 6,
+      "verse": 5,
+      "sanskrit": "उद्धरेदात्मनात्मानं नात्मानमवसादयेत्।\nआत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥६.५॥",
+      "anuvad_hindi": "अपने आपको अपने आप से ऊँचा उठा। अपने आपको नीचा मत गिरा। आत्मा ही अपना मित्र है और आत्मा ही अपना शत्रु है।",
+      "arth": "तुम्हारा सबसे बड़ा मित्र तुम्हीं हो, और सबसे बड़ा शत्रु भी तुम्हीं। अपने मन को control करो, यही सफलता है।",
+      "intent_keywords": ["self-control", "mind", "atman", "आत्मनियंत्रण", "मन"],
+      "english_translation": "Lift yourself by your own mind. Do not degrade yourself. The mind is the friend of the self and also its enemy."
+    },
+    {
+      "id": "6.26",
+      "chapter": 6,
+      "verse": 26,
+      "sanskrit": "यतो यतो निश्चरति मनश्चञ्चलमस्थिरम्।\nतत: तत: नियमयेदात्मनैव वशं नयेत्॥६.२६॥",
+      "anuvad_hindi": "जहाँ-जहाँ यह अस्थिर और चंचल मन जाता है, वहाँ से वहाँ से उसे वश में करके अपनी ओर लगा।",
+      "arth": "मन भटकता है, यह स्वाभाविक है। लेकिन जब भटकता है, तो उसे फिर से लक्ष्य पर लगा। यही ध्यान का अभ्यास है।",
+      "intent_keywords": ["mind", "meditation", "focus", "एकाग्रता", "योग"],
+      "english_translation": "Wherever the unsteady mind wanders, one should draw it back and bring it under the control of the self."
+    },
+    {
+      "id": "9.22",
+      "chapter": 9,
+      "verse": 22,
+      "sanskrit": "अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।\nतेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥९.२२॥",
+      "anuvad_hindi": "जो लोग एकाग्रचित्त होकर मेरा ध्यान करते हैं और मेरी पूरी निष्ठा से सेवा करते हैं, उन नित्य-युक्त भक्तों का योग-क्षेम मैं स्वयं वहन करता हूँ।",
+      "arth": "जो पूरी निष्ठा से भक्ति करता है, परमात्मा उसकी सभी चिंताएं दूर करते हैं। पूर्ण समर्पण ही शांति का मार्ग है।",
+      "intent_keywords": ["devotion", "bhakti", "surrender", "service", "भक्ति", "समर्पण", "सेवा", "prem", "प्रेम", "love", "pyar"],
+      "english_translation": "Those who always think of Me, worship Me with all their devotion; I provide them what they need and protect what they already possess."
+    },
+    {
+      "id": "12.13",
+      "chapter": 12,
+      "verse": 13,
+      "sanskrit": "य इच्छति प्रिय हितं आत्मनः सर्वभूतानां।\nअद्रोहः सर्वभूतेषु मैत्रः करुणः।\nनिर्ममः निरहंकारः समदुःखसुखः क्षमी।",
+      "anuvad_hindi": "जो व्यक्ति सभी प्राणियों के कल्याण की कामना करता है, जो किसी से द्रोह नहीं करता, सभी से मित्रता रखता है, करुणामय है, ममता और अहंकार से रहित है।",
+      "arth": "सच्चा भक्त सभी के लिए कल्याणकारी होता है। द्रोह छोड़ो, करुणा रखो। यही भक्ति का परिणाम है।",
+      "intent_keywords": ["devotion", "compassion", "kindness", "समता", "दया", "prem", "प्रेम", "love", "pyar"],
+      "english_translation": "One who wishes well for all beings, who is friendly and compassionate, free from ego and greed, and patient—is dear to Me."
+    },
+    {
+      "id": "12.15",
+      "chapter": 12,
+      "verse": 15,
+      "sanskrit": "यस्मान्न विजुगुप्सन्ते लोका लोकान्न च जिगूर्षति।\nहर्षामर्षभयोद्वेगैर्मुक्तः सः मे प्रियः।",
+      "anuvad_hindi": "वह व्यक्ति जिससे दुनियाँ भयभीत नहीं है और जो किसी से भयभीत नहीं है, जो हर्ष, अमर्ष, भय और व्याकुलता से रहित है, वह मेरा प्रिय है।",
+      "arth": "भगवान को वह भक्त प्रिय है जो शांत, स्थिर और सभी से प्रेम करने वाला है। किसी को हानि न पहुंचा, किसी से डरो न।",
+      "intent_keywords": ["devotion", "peace", "equanimity", "शांति", "स्थिरता", "prem", "प्रेम", "love", "pyar"],
+      "english_translation": "By whom the world is not troubled and who is not troubled by the world, and who is free from pleasure, anger, fear, and agitation—is dear to Me."
+    }
+  ]
+}
