@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         
         {/* Main wrapper */}
         <div className="flex-1 w-full relative z-10 pt-20">
-          <main className="max-w-7xl mx-auto">
+          <main className="w-full">
             {children}
           </main>
         </div>

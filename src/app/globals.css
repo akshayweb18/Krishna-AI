@@ -55,6 +55,11 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--deep-night);
   color: var(--divine-text);
