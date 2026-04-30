@@ -67,6 +67,7 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  overflow-y: auto;
   padding-bottom: env(safe-area-inset-bottom);
   line-height: 1.5;
 }
@@ -320,10 +321,11 @@ h3,
   -webkit-tap-highlight-color: transparent;
 }
 
-body {
-  background-color: #0C0A1F;
-  color: #f8fafc;
-  overscroll-behavior-y: none;
+/* General Transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .animate-fade-in {

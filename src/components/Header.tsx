@@ -14,6 +14,15 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => { document.body.style.overflow = 'unset' }
+  }, [isOpen])
+
   const navItems = [
     { name: 'Home', icon: '🏠', href: '/' },
     { name: 'Chat', icon: '💬', href: '/chat' },
