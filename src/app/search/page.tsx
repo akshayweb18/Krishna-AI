@@ -35,7 +35,7 @@ export default function SearchPage() {
         
         const fetchPromises = chaptersToFetch.map(async (id) => {
           try {
-            const res = await import(`../../../data/chapters/chapter_${id}.json`)
+            const res = await import(`../../data/chapters/chapter_${id}.json`)
             const data = res.default
             data.shlokas.forEach((s: any) => {
               allVerses.push({ ...s, chapter: id })

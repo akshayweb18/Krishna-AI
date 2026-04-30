@@ -5,6 +5,7 @@ import React from 'react'
 export const dynamic = 'force-static'
 
 export default function GitaIndex() {
+  return (
     <div className="relative min-h-screen bg-[#0C0A1F]/60 backdrop-blur-[1px] hardware-accelerated">
       {/* Background Atmosphere is now global in layout.tsx */}
 
